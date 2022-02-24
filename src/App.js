@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCountriesAsync } from "./redux/caseTracker/caseSlice";
+import { countries as ct } from "countries-list";
+import ConfirmedMap from "./components/maps/ConfirmedMap";
 
 function App() {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.case.countries);
+  const isNamesLoading = useSelector((state) => state.case.isNamesLoading);
+  const error = useSelector((state) => state.case.error);
+
+  useEffect(() => {
+    dispatch(getCountriesAsync());
+  }, []);
+
+  useEffect(() => {
+    console.log(countries);
+  }, [isNamesLoading]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ConfirmedMap />
     </div>
   );
 }
