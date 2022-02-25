@@ -1,9 +1,20 @@
 .map{
- max-width: 300px;
- max-height: 300px;
+ max-width: calc(100%/3);
 }
 
-.map-container {
-  height: 400px;
-  width: 400px;
-  }
+body{
+  background-color: #2D4059
+  !important;
+}
+
+.svgMap-map-wrapper{
+  background-color: #2D4059
+  !important;
+
+  box-shadow: #333 5px 5px;
+}
+
+
+.svgMap-map-controls-wrapper{
+  left: calc((50%) - 30px) !important;
+}

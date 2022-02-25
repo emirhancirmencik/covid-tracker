@@ -10,20 +10,53 @@ export const getCountriesAsync = createAsyncThunk(
   }
 );
 
+export const getGlobalAsync = createAsyncThunk(
+  "case/getGlobalAsync",
+  async () => {
+    const res = await axios("https://covid19.mathdro.id/api");
+    return res.data;
+  }
+);
+
 const caseSlice = createSlice({
   name: "case",
   initialState: {
     values: "asdasd",
+    global: {},
     confirmed: [],
     countries: [],
-    confirmedValues: {},
+    confirmedMap: {},
+    deathsMap: {},
     isNamesLoading: true,
-    isDataLoading: true,
+    isGlobalLoading: true,
+    date: "",
     error: null,
   },
   reducer: {},
   extraReducers: {
-    // Country Names
+    //Global
+    [getGlobalAsync.pending]: (state, action) => {
+      state.isGlobalLoading = true;
+    },
+    [getGlobalAsync.fulfilled]: (state, action) => {
+      state.global = action.payload;
+      let d = new Date(state.global.lastUpdate);
+      state.global.date = d.toLocaleString("en-US", {
+        weekday: "short",
+        year: "numeric",
+        month: "long",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      });
+      state.isGlobalLoading = false;
+    },
+    [getGlobalAsync.rejected]: (state, action) => {
+      state.isGlobalLoading = false;
+    },
+
+    // Country Datas Total
+
     [getCountriesAsync.pending]: (state, action) => {
       state.isNamesLoading = true;
     },
@@ -40,12 +73,13 @@ const caseSlice = createSlice({
             deaths: e.deaths,
             iso2: e.iso2,
           });
-          state.confirmedValues[e.iso2] = { confirmed: e.confirmed };
+          state.confirmedMap[e.iso2] = { value: e.confirmed };
+          state.deathsMap[e.iso2] = { value: e.deaths };
         } else {
           state.countries[index].confirmed += e.confirmed;
           state.countries[index].deaths += e.deaths;
-          state.confirmedValues[e.iso2].confirmed += e.confirmed;
-          state.confirmedValues[e.iso2].deaths += e.deaths;
+          state.confirmedMap[e.iso2].value += e.confirmed;
+          state.deathsMap[e.iso2].value += e.deaths;
         }
       });
       state.isNamesLoading = false;

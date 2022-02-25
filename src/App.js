@@ -1,9 +1,14 @@
 import "./App.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCountriesAsync } from "./redux/caseTracker/caseSlice";
+import {
+  getCountriesAsync,
+  getGlobalAsync,
+} from "./redux/caseTracker/caseSlice";
 import { countries as ct } from "countries-list";
-import ConfirmedMap from "./components/maps/ConfirmedMap";
+import Maps from "./components/maps/Maps";
+import Global from "./components/global/Global";
+import Nav from "./components/Nav";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,7 +18,10 @@ function App() {
 
   useEffect(() => {
     dispatch(getCountriesAsync());
+    dispatch(getGlobalAsync());
   }, []);
+
+  useEffect(() => {}, [countries]);
 
   useEffect(() => {
     console.log(countries);
@@ -21,7 +29,9 @@ function App() {
 
   return (
     <div className="App">
-      <ConfirmedMap />
+      <Nav />
+      <Global />
+      <Maps />
     </div>
   );
 }
