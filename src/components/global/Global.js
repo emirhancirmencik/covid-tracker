@@ -9,7 +9,7 @@ function Global() {
   const date = useSelector((state) => state.case.global.date);
 
   return (
-    <Box w="50%">
+    <Box w={["100%", "100%", "40%"]} marginTop={"auto"}>
       {isGlobalLoading ? null : (
         <Box w="100%" padding={50} flexWrap="wrap">
           <Box w={"100%"}>
@@ -23,7 +23,7 @@ function Global() {
             </Text>
           </Box>
           <Box
-            w={"75%"}
+            w={["100%", "100%", "75%"]}
             display="flex"
             marginLeft="10px"
             boxShadow={"#333 5px 5px"}

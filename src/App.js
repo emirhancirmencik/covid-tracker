@@ -10,7 +10,7 @@ import {
 import Maps from "./components/maps/Maps";
 import Global from "./components/global/Global";
 import Nav from "./components/Nav";
-import { Box } from "@chakra-ui/react";
+import { Box, Link, Text } from "@chakra-ui/react";
 import GlobalChart from "./components/charts/GlobalChart";
 import CountryChart from "./components/charts/CountryChart";
 import Loading from "./components/Loading";
@@ -39,7 +39,7 @@ function App() {
         <Loading />
       ) : (
         <>
-          <Box w="100%" display="flex">
+          <Box w="100%" display="flex" flexWrap="wrap">
             <Global />
             <Nav />
           </Box>
@@ -51,6 +51,19 @@ function App() {
           </Box>
           <Box w="100%" display="flex">
             <CountryChart />
+          </Box>
+          <Box w="100%" marginTop={50} marginBottom={50} display="flex">
+            <Text color={"gray"} textAlign={"center"} mx={"auto"}>
+              made with love by{" "}
+              <Link
+                _hover={{ textDecoration: "none" }}
+                textDecoration={"none"}
+                color={"#000"}
+                href={"https://github.com/emirhancirmencik"}
+              >
+                emirhan cirmencik{" "}
+              </Link>
+            </Text>
           </Box>
         </>
       )}

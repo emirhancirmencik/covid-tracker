@@ -39,9 +39,10 @@ function MapContainer({ data, mapType }) {
 
   return (
     <Box
-      w="50%"
-      marginEnd={mapType === "confirmed" ? 5 : 0}
-      marginStart={mapType === "confirmed" ? 0 : 5}
+      w={["100%", "100%", "calc((50%) - 2.5rem)"]}
+      marginEnd={mapType === "confirmed" ? [0, 0, "1.25rem"] : 0}
+      marginStart={mapType === "confirmed" ? 0 : [0, 0, "1.25rem"]}
+      marginBottom={mapType === "confirmed" ? [50, 50, 0] : 0}
     >
       {isCountryLoading ? (
         "loading..."
@@ -56,7 +57,8 @@ function MapContainer({ data, mapType }) {
               textAlign={"center"}
               textColor="#FEFEFE"
             >
-              {mapType[0].toUpperCase() + mapType.slice(1)} Map
+              {mapType[0].toUpperCase() + mapType.slice(1)}{" "}
+              {mapType === "confirmed" ? "Cases " : null}Map
             </Text>
           </Box>
         </>

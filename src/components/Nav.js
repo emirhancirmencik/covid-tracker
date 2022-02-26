@@ -4,18 +4,18 @@ import { Box, Link } from "@chakra-ui/react";
 function Nav() {
   return (
     <Box
-      w={"50%"}
+      w={["100%", "100%", "58%"]}
       marginTop={"auto"}
-      marginRight={50}
+      marginX={["auto", "auto", "1%"]}
       height={75}
-      marginBottom={50}
+      marginBottom={75}
       bgColor={"#EA5455"}
       boxShadow={"#333 5px 5px"}
       d="flex"
     >
       <Box
-        marginLeft={"5%"}
-        w={"90%"}
+        marginLeft={"2.5%"}
+        w={"95%"}
         d="flex"
         justifyContent={"space-between"}
       >

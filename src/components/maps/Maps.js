@@ -14,6 +14,7 @@ function Maps() {
           display="flex"
           alignItems="center"
           justifyContent="space-between"
+          flexWrap={"wrap"}
         >
           <MapContainer data={confirmed} mapType={"confirmed"} />
           <MapContainer data={deathValues} mapType={"deaths"} />

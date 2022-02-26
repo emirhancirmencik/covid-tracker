@@ -104,14 +104,16 @@ function CountryChart() {
           alignItems="center"
           justifyContent="space-between"
           id="compare"
+          flexWrap={"wrap"}
         >
-          <Box w="40%" padding={"3%"} id={"country"}>
+          <Box w={["100%", "100%", "40%"]} padding={"3%"} id={"country"}>
             <Box
               w="100%"
               h="100%"
               height={"300px"}
               backgroundColor={"#2D4059"}
               boxShadow="#333 5px 5px;"
+              marginBottom={50}
             >
               <Box w="100%" display={"flex"}>
                 <Box mx={"auto"} my={"20px"}>
@@ -218,9 +220,11 @@ function CountryChart() {
             </Box>
           </Box>
           <Box
-            w="60%"
+            w={["100%", "100%", "60%"]}
             paddingEnd={"3%"}
+            paddingStart={"3%"}
             marginStart={"auto"}
+            marginBottom={50}
             h={300}
             backgroundColor={"#EA5455"}
           >
