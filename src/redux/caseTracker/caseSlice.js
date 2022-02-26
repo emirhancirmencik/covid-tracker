@@ -18,28 +18,50 @@ export const getGlobalAsync = createAsyncThunk(
   }
 );
 
+export const getDailyAsync = createAsyncThunk(
+  "case/getDailyAsync",
+  async () => {
+    const res = await axios("https://covid19.mathdro.id/api/daily");
+    return res.data;
+  }
+);
+
 const caseSlice = createSlice({
   name: "case",
   initialState: {
-    values: "asdasd",
     global: {},
     confirmed: [],
     countries: [],
     confirmedMap: {},
     deathsMap: {},
+    daily: [],
     isNamesLoading: true,
     isGlobalLoading: true,
+    isDailyLoading: true,
     date: "",
     error: null,
   },
   reducer: {},
   extraReducers: {
+    // Daily
+    [getDailyAsync.pending]: (state, action) => {
+      state.isDailyLoading = true;
+    },
+    [getDailyAsync.fulfilled]: (state, action) => {
+      state.daily = action.payload;
+      state.isDailyLoading = false;
+    },
+    [getDailyAsync.rejected]: (state, action) => {
+      state.isDailyLoading = false;
+    },
+
     //Global
     [getGlobalAsync.pending]: (state, action) => {
       state.isGlobalLoading = true;
     },
     [getGlobalAsync.fulfilled]: (state, action) => {
       state.global = action.payload;
+      console.log(state.global);
       let d = new Date(state.global.lastUpdate);
       state.global.date = d.toLocaleString("en-US", {
         weekday: "short",

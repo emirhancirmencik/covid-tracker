@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCountriesAsync,
   getGlobalAsync,
+  getDailyAsync,
 } from "./redux/caseTracker/caseSlice";
 import { countries as ct } from "countries-list";
 import Maps from "./components/maps/Maps";
 import Global from "./components/global/Global";
 import Nav from "./components/Nav";
+import { Box } from "@chakra-ui/react";
+import GlobalChart from "./components/GlobalChart";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,20 +22,25 @@ function App() {
   useEffect(() => {
     dispatch(getCountriesAsync());
     dispatch(getGlobalAsync());
+    dispatch(getDailyAsync());
   }, []);
-
-  useEffect(() => {}, [countries]);
 
   useEffect(() => {
     console.log(countries);
   }, [isNamesLoading]);
 
   return (
-    <div className="App">
-      <Nav />
-      <Global />
-      <Maps />
-    </div>
+    <Box className="App">
+      <Box w="100%" display="flex">
+        <Global />
+      </Box>
+      <Box w="100%" display="flex">
+        <GlobalChart />
+      </Box>
+      <Box w="100%" display="flex" marginStart={"auto"}>
+        <Maps />
+      </Box>
+    </Box>
   );
 }
 

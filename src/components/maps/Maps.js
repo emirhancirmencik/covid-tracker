@@ -7,10 +7,10 @@ function Maps() {
   const confirmed = useSelector((state) => state.case.confirmedMap);
   const deathValues = useSelector((state) => state.case.deathsMap);
   return (
-    <Box backgroundColor={"#EA5455"} w="100%" marginStart="" display="flex">
+    <Box backgroundColor={"#EA5455"} w="100%" display="flex">
       <Box w="100%">
         <Box
-          w="70%"
+          w="100%"
           display="flex"
           alignItems="center"
           justifyContent="space-between"

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Box, Text } from "@chakra-ui/react";
-import { getGlobalAsync } from "../../redux/caseTracker/caseSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CountUp from "react-countup";
 
@@ -10,26 +9,21 @@ function Global() {
   const date = useSelector((state) => state.case.global.date);
 
   return (
-    <Box w="100%">
+    <Box w="50%">
       {isGlobalLoading ? null : (
-        <Box w="25%" padding={50} flexWrap="wrap">
+        <Box w="100%" padding={50} flexWrap="wrap">
           <Box w={"100%"}>
             <Text fontWeight="900" fontSize={25} textColor="#EA5455">
               Covid 19
             </Text>
           </Box>
-          <Box w={"100%"} marginLeft="10%">
+          <Box w={"100%"}>
             <Text fontWeight="900" fontSize={25} textColor="#FFD460">
               Global Trend
             </Text>
           </Box>
-          <Box
-            w={"100%"}
-            marginLeft="20%"
-            display="flex"
-            boxShadow={"#333 5px 5px"}
-          >
-            <Box w="calc(50%)" textAlign="center" bgColor={"#F07B3F"}>
+          <Box w={"50%"} display="flex" boxShadow={"#333 5px 5px"}>
+            <Box w="calc(100%)" textAlign="center" bgColor={"#F07B3F"}>
               <Text fontWeight="700">Infected</Text>
               <Text>
                 <CountUp
@@ -39,7 +33,7 @@ function Global() {
                 />
               </Text>
             </Box>
-            <Box w="calc(50%)" textAlign="center" bgColor={"#EA5455"}>
+            <Box w="calc(100%)" textAlign="center" bgColor={"#EA5455"}>
               <Text fontWeight="700">Deaths</Text>
               <Text>
                 <CountUp
@@ -51,7 +45,7 @@ function Global() {
             </Box>
           </Box>
 
-          <Box w={"100%"} marginLeft="20%">
+          <Box w={"50%"}>
             <Text
               fontWeight="300"
               fontSize={14}
