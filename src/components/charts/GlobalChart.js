@@ -52,8 +52,18 @@ function GlobalChart() {
                 angle={-5}
                 textAnchor="end"
               />
-              <YAxis stroke="white" />
-              <Tooltip />
+              <YAxis
+                stroke="white"
+                tickFormatter={(value) =>
+                  new Intl.NumberFormat("en", {
+                    notation: "compact",
+                    compactDisplay: "short",
+                  }).format(value)
+                }
+              />
+              <Tooltip
+                formatter={(value) => new Intl.NumberFormat("en").format(value)}
+              />
               <Legend stroke="white" />
               <Line
                 type="monotone"

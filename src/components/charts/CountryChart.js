@@ -26,6 +26,7 @@ import {
 import { SearchIcon } from "@chakra-ui/icons";
 import { nanoid } from "@reduxjs/toolkit";
 import { countries } from "countries-list";
+import NumberFormat from "react-number-format";
 
 function CountryChart() {
   const countryConfirmed = useSelector((state) => state.case.confirmedMap);
@@ -195,14 +196,26 @@ function CountryChart() {
                                     : countries[country[0]].name}
                                 </Td>
                                 <Td>
-                                  {country[0] === "Global"
-                                    ? global.confirmed.value
-                                    : countryConfirmed[country[0]].value}
+                                  <NumberFormat
+                                    value={
+                                      country[0] === "Global"
+                                        ? global.confirmed.value
+                                        : countryConfirmed[country[0]].value
+                                    }
+                                    displayType={"text"}
+                                    thousandSeparator
+                                  />
                                 </Td>
                                 <Td>
-                                  {country[0] === "Global"
-                                    ? global.deaths.value
-                                    : countryDeath[country[0]].value}
+                                  <NumberFormat
+                                    value={
+                                      country[0] === "Global"
+                                        ? global.deaths.value
+                                        : countryDeath[country[0]].value
+                                    }
+                                    displayType={"text"}
+                                    thousandSeparator
+                                  />
                                 </Td>
                               </Tr>
                             );
@@ -217,9 +230,9 @@ function CountryChart() {
             </Box>
           </Box>
           <Box
-            w={["100%", "100%", "60%"]}
-            paddingEnd={"3%"}
-            paddingStart={"3%"}
+            w={["100%", "100%", "30%"]}
+            paddingStart={["1.5%", "1.5%", "0"]}
+            paddingEnd={["1.5%", "1.5%", "3%"]}
             marginStart={"auto"}
             marginBottom={50}
             h={300}
@@ -247,10 +260,74 @@ function CountryChart() {
                   >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" stroke="white" />
-                    <YAxis stroke="white" />
-                    <Tooltip />
+                    <YAxis
+                      stroke="white"
+                      tickFormatter={(value) =>
+                        new Intl.NumberFormat("en", {
+                          notation: "compact",
+                          compactDisplay: "short",
+                        }).format(value)
+                      }
+                    />
+                    <Tooltip
+                      formatter={(value) =>
+                        new Intl.NumberFormat("en").format(value)
+                      }
+                    />
                     <Legend />
                     <Bar dataKey="confirmed" name="Confirmed" fill="#F07B3F" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </Box>
+            )}
+          </Box>
+          <Box
+            w={["100%", "100%", "30%"]}
+            paddingStart={["1.5%", "1.5%", "0"]}
+            paddingEnd={["1.5%", "1.5%", "3%"]}
+            marginStart={"auto"}
+            marginBottom={50}
+            h={300}
+            backgroundColor={"#EA5455"}
+          >
+            {isCountryLoading ? null : (
+              <Box
+                w="100%"
+                height={"300px"}
+                display={"flex"}
+                backgroundColor={"#2D4059"}
+                boxShadow="#333 5px 5px;"
+              >
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    width={500}
+                    height={500}
+                    data={data}
+                    margin={{
+                      top: 30,
+                      right: 30,
+                      left: 50,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" stroke="white" />
+                    <YAxis
+                      stroke="white"
+                      tickFormatter={(value) =>
+                        new Intl.NumberFormat("en", {
+                          notation: "compact",
+                          compactDisplay: "short",
+                        }).format(value)
+                      }
+                    />
+                    <Tooltip
+                      formatter={(value) =>
+                        new Intl.NumberFormat("en").format(value)
+                      }
+                    />
+                    <Legend />
+
                     <Bar dataKey="deaths" name="Deaths" fill="#EA5455" />
                   </BarChart>
                 </ResponsiveContainer>
