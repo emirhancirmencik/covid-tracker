@@ -231,8 +231,8 @@ function CountryChart() {
           </Box>
           <Box
             w={["100%", "100%", "30%"]}
-            paddingStart={["1.5%", "1.5%", "0"]}
-            paddingEnd={["1.5%", "1.5%", "3%"]}
+            paddingStart={["3%", "3%", "0"]}
+            paddingEnd={["3%", "3%", "3%"]}
             marginStart={"auto"}
             marginBottom={50}
             h={300}
@@ -283,8 +283,8 @@ function CountryChart() {
           </Box>
           <Box
             w={["100%", "100%", "30%"]}
-            paddingStart={["1.5%", "1.5%", "0"]}
-            paddingEnd={["1.5%", "1.5%", "3%"]}
+            paddingStart={["3%", "3%", "0"]}
+            paddingEnd={["3%", "3%", "3%"]}
             marginStart={"auto"}
             marginBottom={50}
             h={300}
