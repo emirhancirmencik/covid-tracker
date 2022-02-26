@@ -6,7 +6,7 @@
 
 ![Compare](./compare.gif)
 
-[Live](https://cardguessinggame.netlify.app)
+[Live](https://covidtrackerec.netlify.app)
 
 ## Getting Started with Create React App
 

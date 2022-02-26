@@ -17,7 +17,6 @@ import Loading from "./components/Loading";
 
 function App() {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.case.countries);
   const isCountryLoading = useSelector((state) => state.case.isCountryLoading);
   const isGlobalLoading = useSelector((state) => state.case.isGlobalLoading);
   const isDailyLoading = useSelector((state) => state.case.isDailyLoading);
