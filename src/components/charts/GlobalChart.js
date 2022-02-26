@@ -15,9 +15,7 @@ import {
 function GlobalChart() {
   const daily = useSelector((state) => state.case.daily);
   const isDailyLoading = useSelector((state) => state.case.isDailyLoading);
-  useEffect(() => {
-    console.log(daily);
-  }, [daily]);
+
   return (
     <Box
       w="100%"

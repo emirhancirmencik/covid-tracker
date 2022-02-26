@@ -43,8 +43,6 @@ function CountryChart() {
 
   values.unshift(["Global", { value: global.confirmed.value }, "Global"]);
 
-  console.log(values);
-
   const [filtered, setFiltered] = useState(values);
 
   const [data, setData] = useState([
@@ -94,7 +92,6 @@ function CountryChart() {
     }
   }
 
-  console.log(data);
   return (
     <Box backgroundColor={"#EA5455"} w="100%" display="flex">
       {isGlobalLoading ? null : (

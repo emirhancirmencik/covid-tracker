@@ -17,7 +17,6 @@ function MapContainer({ data, mapType }) {
       return;
     }
 
-    console.log(data);
     map.current = new svgMap({
       targetElementID: mapType,
       colorMin: mapType === "deaths" ? "#FFE5D9" : "#FFE5D9",
@@ -33,8 +32,6 @@ function MapContainer({ data, mapType }) {
         values: data,
       },
     });
-    console.log(data);
-    console.log(map.current);
   }, [isCountryLoading]);
 
   return (

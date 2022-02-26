@@ -4,7 +4,7 @@ import { Box, Link } from "@chakra-ui/react";
 function Nav() {
   return (
     <Box
-      w={["100%", "100%", "58%"]}
+      w={["100%", "100%", "53%"]}
       marginTop={"auto"}
       marginX={["auto", "auto", "1%"]}
       height={75}

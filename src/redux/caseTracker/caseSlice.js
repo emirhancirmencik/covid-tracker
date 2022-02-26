@@ -60,7 +60,6 @@ const caseSlice = createSlice({
     },
     [getGlobalAsync.fulfilled]: (state, action) => {
       state.global = action.payload;
-      console.log(state.global);
       let d = new Date(state.global.lastUpdate);
       state.global.date = d.toLocaleString("en-US", {
         weekday: "short",
@@ -106,7 +105,6 @@ const caseSlice = createSlice({
       state.isCountryLoading = false;
     },
     [getCountriesAsync.rejected]: (state, action) => {
-      state.error = action.payload;
       state.isCountryLoading = false;
     },
   },
