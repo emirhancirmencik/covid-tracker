@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import CountUp from "react-countup";
 
 function Global() {
@@ -13,18 +13,31 @@ function Global() {
       {isGlobalLoading ? null : (
         <Box w="100%" padding={50} flexWrap="wrap">
           <Box w={"100%"}>
-            <Text fontWeight="900" fontSize={25} textColor="#EA5455">
+            <Text fontWeight="900" fontSize={30} textColor="#EA5455">
               Covid 19
             </Text>
           </Box>
-          <Box w={"100%"}>
-            <Text fontWeight="900" fontSize={25} textColor="#FFD460">
+          <Box w={"100%"} marginLeft="10px">
+            <Text fontWeight="900" fontSize={30} textColor="#FFD460">
               Global Trend
             </Text>
           </Box>
-          <Box w={"50%"} display="flex" boxShadow={"#333 5px 5px"}>
-            <Box w="calc(100%)" textAlign="center" bgColor={"#F07B3F"}>
-              <Text fontWeight="700">Infected</Text>
+          <Box
+            w={"75%"}
+            display="flex"
+            marginLeft="10px"
+            boxShadow={"#333 5px 5px"}
+            h={"60px"}
+          >
+            <Box
+              w="calc(100%)"
+              padding={2}
+              textAlign="center"
+              bgColor={"#F07B3F"}
+            >
+              <Text fontWeight="700" my="auto">
+                Infected
+              </Text>
               <Text>
                 <CountUp
                   start={0}
@@ -33,7 +46,12 @@ function Global() {
                 />
               </Text>
             </Box>
-            <Box w="calc(100%)" textAlign="center" bgColor={"#EA5455"}>
+            <Box
+              w="calc(100%)"
+              padding={2}
+              textAlign="center"
+              bgColor={"#EA5455"}
+            >
               <Text fontWeight="700">Deaths</Text>
               <Text>
                 <CountUp
@@ -45,12 +63,13 @@ function Global() {
             </Box>
           </Box>
 
-          <Box w={"50%"}>
+          <Box w={"75%"}>
             <Text
               fontWeight="300"
               fontSize={14}
               textAlign={"end"}
-              textColor="gray"
+              textColor="white"
+              marginTop="10px"
             >
               Last Updated at: {date}
             </Text>

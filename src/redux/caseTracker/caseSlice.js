@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { countries } from "countries-list";
 
 export const getCountriesAsync = createAsyncThunk(
   "case/getCountriesAsync",
@@ -35,7 +34,7 @@ const caseSlice = createSlice({
     confirmedMap: {},
     deathsMap: {},
     daily: [],
-    isNamesLoading: true,
+    isCountryLoading: true,
     isGlobalLoading: true,
     isDailyLoading: true,
     date: "",
@@ -80,7 +79,7 @@ const caseSlice = createSlice({
     // Country Datas Total
 
     [getCountriesAsync.pending]: (state, action) => {
-      state.isNamesLoading = true;
+      state.isCountryLoading = true;
     },
     [getCountriesAsync.fulfilled]: (state, action) => {
       state.confirmed = action.payload;
@@ -104,11 +103,11 @@ const caseSlice = createSlice({
           state.deathsMap[e.iso2].value += e.deaths;
         }
       });
-      state.isNamesLoading = false;
+      state.isCountryLoading = false;
     },
     [getCountriesAsync.rejected]: (state, action) => {
       state.error = action.payload;
-      state.isNamesLoading = false;
+      state.isCountryLoading = false;
     },
   },
 });

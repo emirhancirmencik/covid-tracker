@@ -1,12 +1,12 @@
-import { useEffect, useState, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import svgMap from "svgmap";
 import "svgmap/dist/svgMap.min.css";
 import { Box, Text } from "@chakra-ui/react";
 
 function MapContainer({ data, mapType }) {
-  const countries = useSelector((state) => state.case.countries);
-  const isNamesLoading = useSelector((state) => state.case.isNamesLoading);
+  const isCountryLoading = useSelector((state) => state.case.isCountryLoading);
   const map = useRef(null);
   useEffect(() => {
     if (document.getElementById(mapType) === null) {
@@ -35,31 +35,28 @@ function MapContainer({ data, mapType }) {
     });
     console.log(data);
     console.log(map.current);
-  }, [isNamesLoading]);
+  }, [isCountryLoading]);
 
   return (
-    <Box w="100%">
-      {isNamesLoading ? (
+    <Box
+      w="50%"
+      marginEnd={mapType === "confirmed" ? 5 : 0}
+      marginStart={mapType === "confirmed" ? 0 : 5}
+    >
+      {isCountryLoading ? (
         "loading..."
       ) : (
         <>
-          <Box
-            w={"90%"}
-            padding={"5%"}
-            mx="auto"
-            paddingStart={mapType === "confirmed" ? "5%" : "2.5%"}
-            paddingEnd={mapType === "deaths" ? "5%" : "2.5%"}
-            id={mapType}
-          ></Box>
+          <Box w={"100%"} mx="auto" id={mapType}></Box>
           <Box w={"100%"}>
             <Text
-              marginTop={"0"}
-              fontWeight="500"
-              fontSize={14}
+              marginTop={"5"}
+              fontWeight="900"
+              fontSize={20}
               textAlign={"center"}
-              textColor="white"
+              textColor="#FEFEFE"
             >
-              {mapType[0].toUpperCase() + mapType.slice(1)}
+              {mapType[0].toUpperCase() + mapType.slice(1)} Map
             </Text>
           </Box>
         </>

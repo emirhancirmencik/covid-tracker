@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import {
   LineChart,
@@ -21,15 +21,16 @@ function GlobalChart() {
   return (
     <Box
       w="100%"
-      padding={"2.5%"}
-      marginTop={50}
-      h={300}
+      padding={"3%"}
+      marginTop={""}
+      h={"400px"}
       backgroundColor={"#EA5455"}
+      id={"global"}
     >
       {isDailyLoading ? null : (
         <Box
           w="100%"
-          h="100%"
+          height={"300"}
           display={"flex"}
           backgroundColor={"#2D4059"}
           boxShadow="#333 5px 5px;"

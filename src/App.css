@@ -18,3 +18,24 @@ body{
 .svgMap-map-controls-wrapper{
   left: calc((50%) - 30px) !important;
 }
+
+html { scroll-behavior: smooth; }
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(122, 141, 168) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(202, 199, 190) !important;
+  border-radius: 10rem !important;
+  border: 5px solid rgb(202, 199, 190)!important;
+}
+
+::-webkit-scrollbar {
+  width: 0.4rem !important;
+}
